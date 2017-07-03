@@ -106,6 +106,7 @@
         "sudo sed -i -r -e 's/# *log4j.appender.ROLLINGFILE.MaxFileSize/log4j.appender.ROLLINGFILE.MaxFileSize/;/^log4j.appender.ROLLINGFILE.MaxFileSize/s/=.*/=10MB/' /srv/zookeeper/conf/log4j.properties",
         "sudo sed -i -r -e 's/# *log4j.appender.ROLLINGFILE.MaxBackupIndex/log4j.appender.ROLLINGFILE.MaxBackupIndex/;/^log4j.appender.ROLLINGFILE.MaxBackupIndex/s/=.*/=10/' /srv/zookeeper/conf/log4j.properties",
         "echo \"JVMFLAGS=\\\"\\$JVMFLAGS -Xmx\\$(/usr/bin/awk '/MemTotal/{m=\\$2*.65;print m\\\"k\\\"}' /proc/meminfo)\\\"\" | sudo tee -a /srv/zookeeper/conf/java.env > /dev/null",
+        "echo -e 'JMXLOCALONLY=false\nJMXPORT=7199\nJMXAUTH=false\nJMXSSL=false' | sudo tee -a /srv/zookeeper/conf/java.env > /dev/null",
         "echo -e 'ZOO_LOG4J_PROP=\"INFO,ROLLINGFILE\"\\nZOO_LOG_DIR=\"/var/log/zookeeper\"\\nZOOPIDFILE=\"/var/run/zookeeper/zookeeper.pid\"\\nZOOCFGDIR=\"/srv/zookeeper/conf\"' | sudo tee -a /srv/zookeeper/conf/zookeeper-env.sh > /dev/null",
         "echo 1 | sudo tee /data/zookeeper/myid > /dev/null",
         "sudo chown -R zookeeper:zookeeper /srv/zookeeper /data/zookeeper /var/log/zookeeper /var/run/zookeeper",

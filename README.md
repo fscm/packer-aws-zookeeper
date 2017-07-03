@@ -135,6 +135,7 @@ The following ports will have to be configured on Security Groups.
 | SSH          | 22        |    TCP   |
 | Zookeeper    | 2181      |    TCP   |
 | Zookeeper    | 2888:3888 |    TCP   |
+| JMX          | 7199      |    TCP   |
 
 ## Contributing
 
